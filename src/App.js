@@ -1,8 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from "react"
+import ChildComponents from "../src/ChildComponents"
 
+export const userDetailsContext = React.createContext(null);
 function App() {
-  return (
+   
+   var [userDetails, setUserDetails] = useState({
+    name: "Karthick",
+    age:32
+   });
+    return (
+      <userDetailsContext.Provider value={userDetails}>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -18,7 +27,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <ChildComponents></ChildComponents>
     </div>
+    </userDetailsContext.Provider>
   );
 }
 
